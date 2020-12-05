@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -9,7 +8,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        String dataFile = "./src/sample-data.txt";
+        String dataFile = "./src/7_14_2019.txt";
 
         int maxCount = 0;
         List<RadioSample> radioSampleList = new ArrayList<>();
@@ -19,7 +18,7 @@ public class Main {
             while(scanner.hasNextLine()) {
                 String tempData = scanner.nextLine();
                 if(tempData.contains("Every Minute")) {
-                    //TODO: put stackoverflow where i found this regex
+                    //TODO: This regex was found on this StackOverflow answer: https://stackoverflow.com/questions/7488643/how-to-convert-comma-separated-string-to-list
                     List<String> tempDataArray = Arrays.asList(tempData.split("\\s*,\\s*"));
 
                     String tempDate = tempData.substring(0, tempData.indexOf(" "));
@@ -56,7 +55,8 @@ public class Main {
         System.out.println();
         System.out.println("_".repeat(45));
 
-        for (RadioSample sampleToDisplay: radioSampleList) {
+        //should this also be a method?
+        for (RadioSample sampleToDisplay: radioSampleListToDisplay) {
             System.out.printf(sampleToDisplay.getDate());
             System.out.printf(" ".repeat(20));
 
